@@ -1,0 +1,13 @@
+name: librato-build-metrics
+version: 0.0.1
+description: Send a build information off to Librato
+keywords:
+  - metrics
+  - librato
+properties:
+  librato-api-token:
+    type: string
+    required: true
+  librato-username:
+    type: string
+    required: true
