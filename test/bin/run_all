@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+DIR=$(dirname $0)
+
+time $DIR/../support/roundup $DIR/../{unit}/*
