@@ -27,5 +27,12 @@ build_passed() {
 function build_time {
   # $1: $WERCKER_MAIN_PIPELINE_FINISHED
   # $2: $WERCKER_MAIN_PIPELINE_STARTED
-  return `expr $1 - $2`
+  decimal_regex='^[0-9]+$'
+
+  if [[ -n $1 && -n $2 ]]; then
+    if [[ $1 =~ $decimal_regex && $2 =~ $decimal_regex ]]; then
+       return `expr $1 - $2`
+    fi
+  fi
+  return 1
 }
