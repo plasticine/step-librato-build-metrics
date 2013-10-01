@@ -1,29 +1,6 @@
 #!/bin/sh +xe
 
-# function on_master_branch {
-#   if [[ $WERCKER_GIT_BRANCH == "master" ]]; then
-#     return 0
-#   fi
-#   return 1
-# }
-
-# function build_passed {
-#   if [[ "$WERCKER_RESULT" = "passed" ]]; then
-#     return 0
-#   fi
-#   return 1
-# }
-
-# function is_deploy {
-#   if [[ ! -n "$DEPLOY" ]]; then
-#     return 0
-#   fi
-#   return 1
-# }
-
-# function build_time {
-#   return ($WERCKER_MAIN_PIPELINE_FINISHED - $WERCKER_MAIN_PIPELINE_STARTED)
-# }
+. "./support/wercker-functions.sh"
 
 # function publish_metric {
 #   curl \

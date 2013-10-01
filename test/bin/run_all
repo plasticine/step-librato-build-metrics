@@ -2,4 +2,4 @@
 
 DIR=$(dirname $0)
 
-time $DIR/../support/roundup $DIR/../{unit}/*
+time $DIR/../support/roundup $DIR/../unit/*

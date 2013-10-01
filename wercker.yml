@@ -3,5 +3,9 @@ build:
   steps:
     - validate-wercker-step
     - script:
-        name: specs
+        name: Run tests
         code: ./test/bin/run_all
+  after-steps:
+    - script:
+        name: Environment
+        code: printenv
