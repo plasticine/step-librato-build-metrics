@@ -3,5 +3,5 @@ build:
   steps:
     - validate-wercker-step
     - script:
-      name: specs
-      code: ./test/bin/run_all
+        name: specs
+        code: ./test/bin/run_all
