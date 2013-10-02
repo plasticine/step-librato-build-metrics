@@ -24,7 +24,7 @@ build_passed() {
   return 1
 }
 
-function build_time {
+build_time() {
   # $1: $WERCKER_MAIN_PIPELINE_FINISHED
   # $2: $WERCKER_MAIN_PIPELINE_STARTED
   decimal_regex='^[0-9]+$'

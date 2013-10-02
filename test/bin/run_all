@@ -2,4 +2,6 @@
 
 DIR=$(dirname $0)
 
-time $DIR/../support/roundup $DIR/../unit/*_test.sh
+. $DIR/../support/*.sh
+
+time $DIR/../bin/roundup $DIR/../unit/*_test.sh
