@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+source ./test/support/stub.sh
+
 #Search argument 1 for substring in argument 2
 search_substring() {
   if echo "$1" | grep -q "$2"; then

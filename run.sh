@@ -1,6 +1,6 @@
 #!/bin/sh +xe
 
-. "./support/wercker-functions.sh"
+source ./support/wercker-functions.sh
 
 # function publish_metric {
 #   curl \

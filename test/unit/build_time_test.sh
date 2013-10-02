@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-. ./test/test_helper.sh
-. ./support/wercker-functions.sh
+source ./test/test_helper.sh
+source ./support/wercker-functions.sh
 
 describe "build_time"
 
