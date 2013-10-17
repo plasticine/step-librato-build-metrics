@@ -1,18 +1,14 @@
 #!/bin/sh +xe
 
 source ./support/wercker-functions.sh
+source ./support/librato-functions.sh
 
-# function publish_metric {
-#   curl \
-#     -u "$LIBRATO_USER":"$LIBRATO_TOKEN" \
-#     -d "display_name='$1'&attributes[$2]=$3" \
-#     -X PUT \
-#     'https://metrics-api.librato.com/v1/metrics/test'
-# }
+# TODO: check for librato credentials here...
 
-if [[ on_master_branch && build_passed ]];
+# build time
+if [[ !is_deploy ]];
 then
-  publish_metric "CI Build Time", 'build_time', build_time
-else
-  info "Skipping..."
+  add_counter 'build_time' build_time branch_name
 fi
+
+publish

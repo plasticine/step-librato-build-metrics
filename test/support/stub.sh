@@ -2,7 +2,9 @@
 # Stub commands printing it's name and arguments to STDOUT or STDERR.
 stub() {
   local cmd="$1"
-  if [ "$2" == "STDERR" ]; then local redirect=" 1>&2"; fi
+  if [ "$2" == "STDERR" ]; then
+    local redirect=" 1>&2";
+  fi
 
   if [[ "$(type "$cmd" | head -1)" == *"is a function" ]]; then
     local source="$(type "$cmd" | tail -n +2)"

@@ -4,7 +4,7 @@ build:
     - validate-wercker-step
     - script:
         name: Run tests
-        code: ./test/bin/run_all
+        code: ./script/spec
   after-steps:
     - script:
         name: Environment
