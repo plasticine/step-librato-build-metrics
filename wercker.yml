@@ -7,5 +7,5 @@ build:
         code: ./script/spec
   after-steps:
     - script:
-        name: Environment
-        code: printenv
+        name: Save stats
+        code: ./run.sh
