@@ -1,5 +1,7 @@
 #!/bin/sh +xe
 
+ls -al
+
 source ./support/wercker-functions.sh
 source ./support/librato-functions.sh
 
