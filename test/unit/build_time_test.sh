@@ -5,16 +5,23 @@ source ./support/wercker-functions.sh
 
 describe "build_time"
 
-it_returns_the_difference_between_two_timestamps() {
+it_outputs_the_difference_between_two_timestamps() {
   WERCKER_MAIN_PIPELINE_FINISHED=1380619271
   WERCKER_MAIN_PIPELINE_STARTED=1380619247
-  result=$(set +e ; build_time ; echo $?)
+  result=$(set +e ; build_time ;)
   test "24" -eq $result
 }
 
+it_returns_truthy_when_successful() {
+  WERCKER_MAIN_PIPELINE_FINISHED=1380619271
+  WERCKER_MAIN_PIPELINE_STARTED=1380619247
+  result=$(set +e ; build_time > /dev/null ; echo $?)
+  test 0 -eq $result
+}
+
 it_returns_falsy_when_not_passed_any_params() {
-  WERCKER_MAIN_PIPELINE_FINISHED=
-  WERCKER_MAIN_PIPELINE_STARTED=
+  unset WERCKER_MAIN_PIPELINE_FINISHED
+  unset WERCKER_MAIN_PIPELINE_STARTED
   result=$(set +e ; build_time ; echo $?)
   test 1 -eq $result
 

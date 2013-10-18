@@ -1,6 +1,3 @@
 #!/bin/bash -e
 
-export LIBRATO_USER="desk@pixelbloom.com"
-export LIBRATO_TOKEN="750ee14d53a8003d1c40553603debfafa2d7c07917dffd6fa2d1820f48219b85"
-
 ./test/bin/run_all

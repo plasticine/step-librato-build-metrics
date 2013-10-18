@@ -1,13 +1,16 @@
 name: librato-build-metrics
-version: 0.0.1
-description: Send a build information off to Librato
+version: 0.0.4
+description: Save metrics about your Wercker builds to Librato
 keywords:
   - metrics
   - librato
 properties:
-  librato-api-token:
+  token:
     type: string
     required: true
-  librato-username:
+  user:
     type: string
     required: true
+  namespace:
+    type: string
+    required: false
