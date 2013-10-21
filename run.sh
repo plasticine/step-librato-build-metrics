@@ -12,6 +12,10 @@
 # WERCKER_RESULT=passed
 # DEPLOY=false
 
+# info() {
+#   echo "${1}"
+# }
+
 if [[ -n "$WERCKER_STEP_ROOT" && $WERCKER_STEP_ROOT != "/wercker/steps/wercker/script/0.0.0" ]]; then
   source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
   source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
@@ -60,6 +64,6 @@ info 'Measuring...'
 
 measure_build_time
 measure_build_state
-info $(publish)
+publish
 
 info 'Done!'

@@ -16,7 +16,8 @@ _add_data() {
 
 _make_request() {
   if [[ -n "$_request_data_buffer" ]]; then
-    local response=$(curl -u ${WERCKER_LIBRATO_BUILD_METRICS_USER}:${WERCKER_LIBRATO_BUILD_METRICS_TOKEN} \
+    local response=$(curl -s \
+      -u ${WERCKER_LIBRATO_BUILD_METRICS_USER}:${WERCKER_LIBRATO_BUILD_METRICS_TOKEN} \
       ${_request_data_buffer} \
       -X POST \
       "https://metrics-api.librato.com/v1/metrics")
@@ -43,7 +44,8 @@ librato_namespace() {
 
 # Publishes metrics to librato and resets measurement data counters
 publish() {
-  echo $(_make_request)
+  info "params: ${_request_data_buffer}"
+  _make_request
   _reset_counter_param_iterator
   _reset_gauge_param_iterator
 }
