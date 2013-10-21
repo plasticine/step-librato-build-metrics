@@ -18,8 +18,13 @@ printenv
 echo $WERCKER_LIBRATO_BUILD_METRICS_USER
 echo $WERCKER_LIBRATO_BUILD_METRICS_TOKEN
 
-source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
-source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
+if [[ -n "$WERCKER_STEP_ROOT" && $WERCKER_STEP_ROOT = "/wercker/steps/wercker/script/0.0.0" ]]; then
+  source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
+  source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
+else
+  source ./support/wercker-functions.sh
+  source ./support/librato-functions.sh
+fi
 
 measure_build_time() {
   if ! is_deploy; then
