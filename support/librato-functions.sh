@@ -43,8 +43,7 @@ librato_namespace() {
 
 # Publishes metrics to librato and resets measurement data counters
 publish() {
-  debug "${_request_data_buffer}"
-  _make_request
+  echo $(_make_request)
   _reset_counter_param_iterator
   _reset_gauge_param_iterator
 }

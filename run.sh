@@ -60,6 +60,6 @@ info 'Measuring...'
 
 measure_build_time
 measure_build_state
-publish
+info $(publish)
 
 info 'Done!'
