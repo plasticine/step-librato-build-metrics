@@ -27,7 +27,7 @@ measure_build_time() {
 
     add_gauge 'builds.duration' $value $source
   else
-    echo '[INFO] Skipping, build is a deploy.'
+    info 'Skipping, build is a deploy.'
   fi
 }
 
@@ -42,24 +42,24 @@ measure_build_state() {
       add_gauge 'builds.failed' $value $source
     fi
   else
-    echo '[INFO] Skipping, build is a deploy.'
+    info 'Skipping, build is a deploy.'
   fi
 }
 
 if [ ! -n "$WERCKER_LIBRATO_BUILD_METRICS_USER" ]; then
-  echo '[ERROR] Please ensure that the user param is set.'
+  error 'Please ensure that the user param is set.'
   exit 1
 fi
 
 if [ ! -n "$WERCKER_LIBRATO_BUILD_METRICS_TOKEN" ]; then
-  echo '[ERROR] Please ensure that token param is set.'
+  error 'Please ensure that token param is set.'
   exit 1
 fi
 
-echo 'measuring...'
+info 'Measuring...'
 
 measure_build_time
 measure_build_state
 publish
 
-echo 'done!'
+info 'Done!'
