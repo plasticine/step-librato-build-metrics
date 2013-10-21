@@ -16,11 +16,11 @@ _add_data() {
 
 _make_request() {
   if [[ -n "$_request_data_buffer" ]]; then
-    curl -s \
-      -u ${WERCKER_LIBRATO_BUILD_METRICS_USER}:${WERCKER_LIBRATO_BUILD_METRICS_TOKEN} \
+    local response=$(curl -u ${WERCKER_LIBRATO_BUILD_METRICS_USER}:${WERCKER_LIBRATO_BUILD_METRICS_TOKEN} \
       ${_request_data_buffer} \
       -X POST \
-      "https://metrics-api.librato.com/v1/metrics"
+      "https://metrics-api.librato.com/v1/metrics")
+    echo "${response}"
     return 0
   else
     return 1
@@ -37,12 +37,13 @@ librato_namespace() {
     echo "wercker.${WERCKER_APPLICATION_NAME}"
     return 0
   fi
-  echo '[ERROR] Either $WERCKER_APPLICATION_NAME or $WERCKER_LIBRATO_BUILD_METRICS_NAMESPACE must be set.'
+  error 'Either $WERCKER_APPLICATION_NAME or $WERCKER_LIBRATO_BUILD_METRICS_NAMESPACE must be set.'
   exit 1
 }
 
 # Publishes metrics to librato and resets measurement data counters
 publish() {
+  debug "${_request_data_buffer}"
   _make_request
   _reset_counter_param_iterator
   _reset_gauge_param_iterator
