@@ -27,6 +27,8 @@ measure_build_time() {
     local source=$(branch_name)
 
     add_gauge 'builds.duration' $value $source
+  else
+    echo '[INFO] Skipping, build is a deploy.'
   fi
 }
 
@@ -40,6 +42,8 @@ measure_build_state() {
     else
       add_gauge 'builds.failed' $value $source
     fi
+  else
+    echo '[INFO] Skipping, build is a deploy.'
   fi
 }
 
@@ -53,6 +57,10 @@ if [ ! -n "$WERCKER_LIBRATO_BUILD_METRICS_TOKEN" ]; then
   exit 1
 fi
 
+echo 'measuring...'
+
 measure_build_time
 measure_build_state
 publish
+
+echo 'done!'
