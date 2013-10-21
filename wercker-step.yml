@@ -1,5 +1,5 @@
 name: librato-build-metrics
-version: 0.0.15
+version: 0.0.16
 description: Save metrics about your Wercker builds to Librato
 keywords:
   - metrics
