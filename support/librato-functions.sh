@@ -21,6 +21,7 @@ _make_request() {
       ${_request_data_buffer} \
       -X POST \
       "https://metrics-api.librato.com/v1/metrics"
+    return 0
   else
     return 1
   fi

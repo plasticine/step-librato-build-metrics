@@ -1,10 +1,7 @@
-#!/bin/bash -e
+#!/bin/bash -xe
 
-# pwd
-# ls -al
-# printenv
-
-# WERCKER_STEP_ROOT="/wercker/steps/plasticine/librato-build-metrics/0.0.5"
+# Debugging things...
+#
 # WERCKER_GIT_REPOSITORY=foo-bar
 # WERCKER_GIT_BRANCH=master
 # WERCKER_LIBRATO_BUILD_METRICS_USER=herp
@@ -14,9 +11,6 @@
 # WERCKER_LIBRATO_BUILD_METRICS_NAMESPACE=test
 # WERCKER_RESULT=passed
 # DEPLOY=false
-
-echo $WERCKER_LIBRATO_BUILD_METRICS_USER
-echo $WERCKER_LIBRATO_BUILD_METRICS_TOKEN
 
 if [[ -n "$WERCKER_STEP_ROOT" && $WERCKER_STEP_ROOT != "/wercker/steps/wercker/script/0.0.0" ]]; then
   source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
@@ -53,19 +47,19 @@ measure_build_state() {
 }
 
 if [ ! -n "$WERCKER_LIBRATO_BUILD_METRICS_USER" ]; then
-  echo '[ERROR] Please ensure that $WERCKER_LIBRATO_BUILD_METRICS_USER is set.'
+  echo '[ERROR] Please ensure that the user param is set.'
   exit 1
 fi
 
 if [ ! -n "$WERCKER_LIBRATO_BUILD_METRICS_TOKEN" ]; then
-  echo '[ERROR] Please ensure that $WERCKER_LIBRATO_BUILD_METRICS_TOKEN is set.'
+  echo '[ERROR] Please ensure that token param is set.'
   exit 1
 fi
 
 echo 'measuring...'
 
-echo measure_build_time
-echo measure_build_state
-echo publish
+measure_build_time
+measure_build_state
+publish
 
 echo 'done!'
