@@ -1,9 +1,12 @@
 #!/bin/bash -e
 
-source ./support/wercker-functions.sh
-source ./support/librato-functions.sh
+pwd
+ls -al
+printenv
 
-# printenv
+source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
+source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
+
 # WERCKER_GIT_REPOSITORY=foo-bar
 # WERCKER_GIT_BRANCH=master
 # WERCKER_LIBRATO_BUILD_METRICS_USER=herp
