@@ -4,9 +4,7 @@ pwd
 ls -al
 printenv
 
-source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
-source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
-
+# WERCKER_STEP_ROOT="/wercker/steps/plasticine/librato-build-metrics/0.0.5"
 # WERCKER_GIT_REPOSITORY=foo-bar
 # WERCKER_GIT_BRANCH=master
 # WERCKER_LIBRATO_BUILD_METRICS_USER=herp
@@ -16,6 +14,12 @@ source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
 # WERCKER_LIBRATO_BUILD_METRICS_NAMESPACE=test
 # WERCKER_RESULT=passed
 # DEPLOY=false
+
+echo $WERCKER_LIBRATO_BUILD_METRICS_USER
+echo $WERCKER_LIBRATO_BUILD_METRICS_TOKEN
+
+source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
+source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
 
 measure_build_time() {
   if ! is_deploy; then
