@@ -18,7 +18,7 @@ printenv
 echo $WERCKER_LIBRATO_BUILD_METRICS_USER
 echo $WERCKER_LIBRATO_BUILD_METRICS_TOKEN
 
-if [[ -n "$WERCKER_STEP_ROOT" && $WERCKER_STEP_ROOT = "/wercker/steps/wercker/script/0.0.0" ]]; then
+if [[ -n "$WERCKER_STEP_ROOT" && $WERCKER_STEP_ROOT != "/wercker/steps/wercker/script/0.0.0" ]]; then
   source "${WERCKER_STEP_ROOT}/support/wercker-functions.sh"
   source "${WERCKER_STEP_ROOT}/support/librato-functions.sh"
 else
