@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
-pwd
-ls -al
-printenv
+# pwd
+# ls -al
+# printenv
 
 # WERCKER_STEP_ROOT="/wercker/steps/plasticine/librato-build-metrics/0.0.5"
 # WERCKER_GIT_REPOSITORY=foo-bar
@@ -64,8 +64,8 @@ fi
 
 echo 'measuring...'
 
-measure_build_time
-measure_build_state
-publish
+echo measure_build_time
+echo measure_build_state
+echo publish
 
 echo 'done!'
