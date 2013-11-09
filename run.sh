@@ -27,7 +27,7 @@ fi
 measure_build_time() {
   if ! is_deploy; then
     local value=$(build_time)
-    local source=$(escape_branch_name branch_name)
+    local source=$(branch_name)
 
     add_gauge 'builds.duration' $value $source
   else
@@ -38,7 +38,7 @@ measure_build_time() {
 measure_build_state() {
   if ! is_deploy; then
     local value=1
-    local source=$(escape_branch_name branch_name)
+    local source=$(branch_name)
 
     if build_passed; then
       add_gauge 'builds.passed' $value $source

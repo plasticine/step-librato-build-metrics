@@ -27,7 +27,7 @@ build_passed() {
 # Returns the branch name of the current build, or non-zero if not set
 branch_name() {
   if [[ $WERCKER_GIT_BRANCH ]]; then
-    echo $WERCKER_GIT_BRANCH
+    echo $(escape_branch_name $WERCKER_GIT_BRANCH)
     return 0
   fi
   return 1
