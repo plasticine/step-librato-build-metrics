@@ -33,6 +33,10 @@ branch_name() {
   return 1
 }
 
+escape_branch_name() {
+  echo ${1//[\/\.]/_}
+}
+
 # Returns the build time duration in seconds elapsed.
 build_time() {
   decimal_regex='^[0-9]+$'
